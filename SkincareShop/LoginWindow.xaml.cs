@@ -29,8 +29,18 @@ namespace SkincareShop
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string email = EmailTextBox.Text;       
-            string password = PasswordTextBox.Text;
+            string email = EmailTextBox.Text.Trim();
+            string password = PasswordTextBox.Text.Trim();
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng nhập email và mật khẩu!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Email không hợp lệ!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             var user = _userService.GetUser(email, password);
             if (user != null)
             {
@@ -38,7 +48,40 @@ namespace SkincareShop
                 mainWindow.Show();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Email hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
+        }
+
+        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RegisterUserWindow registerUserWindow = new RegisterUserWindow();
+            registerUserWindow.Show();
+            this.Close();
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult answer = MessageBox.Show("Do you really to quit", "Quit?", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            if (answer == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }

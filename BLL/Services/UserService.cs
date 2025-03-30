@@ -21,5 +21,22 @@ namespace BLL.Services
         {
             return _userRepository.GetUser(email, password);
         }
+
+        public User RegisterUser(string fullName, string email, string password, string role = "Customer")
+        {
+            if(_userRepository.IsEmailExist(email))
+            {
+                return null;
+            }
+            var newUser = new User
+            {
+                FullName = fullName,
+                Email = email,
+                PasswordHash = password,
+                Role = role,
+                CreatedAt = DateTime.Now
+            };
+            return _userRepository.CreateUser(newUser);
+        }
     }
 }

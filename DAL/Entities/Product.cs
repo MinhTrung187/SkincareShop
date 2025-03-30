@@ -17,6 +17,10 @@ public partial class Product
 
     public int? SkinTypeId { get; set; }
 
+    public string? ImageUrl { get; set; }
+
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();

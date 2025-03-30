@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace DAL.Entities;
 
-public partial class OrderDetail
+public partial class Cart
 {
-    public int OrderDetailId { get; set; }
+    public int CartId { get; set; }
 
-    public int OrderId { get; set; }
+    public int UserId { get; set; }
 
     public int ProductId { get; set; }
 
     public int Quantity { get; set; }
 
-    public decimal Price { get; set; }
-
-    public virtual Order Order { get; set; } = null!;
+    public DateTime? AddedAt { get; set; }
 
     public virtual Product Product { get; set; } = null!;
+
+    public virtual User User { get; set; } = null!;
 }

@@ -17,9 +17,9 @@ public partial class User
 
     public DateTime? CreatedAt { get; set; }
 
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
-    public virtual ICollection<UserSkinTest> UserSkinTests { get; set; } = new List<UserSkinTest>();
 }

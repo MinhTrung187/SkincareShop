@@ -42,9 +42,15 @@ namespace SkincareShop
                 return;
             }
             var user = _userService.GetUser(email, password);
-            if (user != null)
+            if (user != null && user.Role == "Manager")
             {
-                MainWindow mainWindow = new MainWindow();
+                ManagerWindow managerWindoww = new ManagerWindow(user);
+                managerWindoww.Show();
+                this.Close();
+            }
+            else if (user.Role == "Customer")
+            {
+                MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();
                 this.Close();
             }
@@ -57,7 +63,7 @@ namespace SkincareShop
 
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            RegisterUserWindow registerUserWindow = new RegisterUserWindow();
+            RegisterUserWindow registerUserWindow = new RegisterUserWindow(isEditing: false);
             registerUserWindow.Show();
             this.Close();
         }

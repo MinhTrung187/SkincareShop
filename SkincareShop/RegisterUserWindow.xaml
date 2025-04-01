@@ -20,7 +20,8 @@
             <Label Content="Xác nhận mật khẩu:" Grid.Row="3" Grid.Column="0"/>
             <PasswordBox x:Name="txtConfirmPassword" Grid.Row="3" Grid.Column="1"/>
 
-            <Button Content="Đăng Ký" Click="Register_Click"/>
+            <Button x:Name="btnRegister" Content="Đăng Ký" Click="Register_Click" Visibility="Visible"/>
+            <Button x:Name="btnSave" Content="Lưu" Click="Save_Click" Visibility="Collapsed"/>
             <Button Content="Thoát" Click="Exit_Click"/>
         </StackPanel>
     </Grid>

@@ -1,5 +1,9 @@
 ﻿using DAL.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -7,28 +11,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SkincareShop
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ManagerWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ManagerWindow : Window
     {
         private User? _currentUser;
-        public MainWindow(User user)
+        public ManagerWindow(User user)
         {
             _currentUser = user;
             InitializeComponent();
         }
 
-
         private void ManageUser_Click(object sender, RoutedEventArgs e)
         {
-            RegisterUserWindow registerUserWindow = new RegisterUserWindow(isEditing: true, _currentUser);
-            registerUserWindow.ShowDialog();
+            UserListWindow userListWindow = new UserListWindow();
+            userListWindow.ShowDialog();
         }
+
     }
 }

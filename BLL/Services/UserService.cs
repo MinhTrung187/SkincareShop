@@ -38,5 +38,20 @@ namespace BLL.Services
             };
             return _userRepository.CreateUser(newUser);
         }
+
+        public bool UpdateUser(User user)
+        {
+            return _userRepository.UpdateUser(user);
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _userRepository.GetAllUsers();
+        }
+
+        public bool DeleteUser(int userId)
+        {
+            return _userRepository.DeleteUser(userId);
+        }
     }
 }

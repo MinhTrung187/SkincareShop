@@ -44,5 +44,59 @@ namespace DAL.Repositories
             }
         }
 
+        public bool UpdateUser(User user)
+        {
+            using (var db = new SkincareShopContext())
+            {
+                try
+                {
+                    var existingUser = db.Users.FirstOrDefault(u => u.UserId == user.UserId);
+                    if (existingUser != null)
+                    {
+                        existingUser.FullName = user.FullName;
+                        existingUser.PasswordHash = user.PasswordHash;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi khi cập nhật user: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public List<User> GetAllUsers()
+        {
+            using (var db = new SkincareShopContext())
+            {
+                return db.Users.ToList();
+            }
+        }
+
+        public bool DeleteUser(int userId)
+        {
+            using (var db = new SkincareShopContext())
+            {
+                var user = db.Users.FirstOrDefault(x => x.UserId == userId);
+                if (user == null)
+                    return false;
+
+                try
+                {
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi khi xóa user: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
     }
 }

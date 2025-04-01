@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Day la trang ban quat" HorizontalAlignment="Center" Height="110" Margin="0,149,0,0" VerticalAlignment="Top" Width="660" FontSize="60" FontWeight="ExtraBlack"/>
+        <Button Content="ProductMenu" HorizontalAlignment="Left" Margin="528,324,0,0" VerticalAlignment="Top" Height="36" Width="93" Click="OpenProductWindow_Click"/>
 
 
 

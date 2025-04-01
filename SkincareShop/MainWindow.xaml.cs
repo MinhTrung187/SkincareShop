@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using SkincareShop.ProductWindow;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,12 @@ namespace SkincareShop
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenProductWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var productMenu = new ProductMenu();
+            productMenu.Show();
         }
     }
 }

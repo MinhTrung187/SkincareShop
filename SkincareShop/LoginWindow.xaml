@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkincareShop"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" Background="HotPink">
+        Title="LoginWindow" Height="450" Width="800" Background="HotPink" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="LOGIN WINDOW" HorizontalAlignment="Left" Height="45" Margin="265,99,0,0" VerticalAlignment="Top" Width="260" Foreground="Black" FontSize="30" FontWeight="ExtraBlack"/>
         <Label Content="Email" HorizontalAlignment="Left" Height="34" Margin="110,194,0,0" VerticalAlignment="Top" Width="55" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.545,0.707"/>
@@ -13,7 +13,9 @@
         <TextBox x:Name="EmailTextBox" TextWrapping="Wrap"  Margin="240,184,240,210" TextAlignment="Left"/>
         <TextBox x:Name="PasswordTextBox" TextWrapping="Wrap"  Margin="240,264,240,130" TextAlignment="Left"/>
         <Button Content="Login" Margin="240,344,440,50" FontWeight="ExtraBlack" Background="Green" Click="Button_Click"/>
-        <Button Content="Quit" Margin="440,344,240,50" FontWeight="ExtraBlack" Background="Red"/>
+        <Button Content="Quit" Margin="440,344,240,50" FontWeight="ExtraBlack" Background="Red" Click="QuitButton_Click"/>
+        <Label Content="You do not have an account?" HorizontalAlignment="Left" Height="25" Margin="245,314,0,0" VerticalAlignment="Top" Width="145" FontWeight="Bold" FontSize="10"/>
+        <Label Content="Click here" HorizontalAlignment="Left" Height="25" Margin="385,314,0,0" VerticalAlignment="Top" Width="65" FontWeight="Bold" FontSize="10" Foreground="Blue" Cursor="Hand" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
 
     </Grid>
 </Window>

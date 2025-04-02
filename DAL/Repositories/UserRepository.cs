@@ -20,5 +20,28 @@ namespace DAL.Repositories
         {
             return _context.Users.FirstOrDefault(x => x.Email == email && x.PasswordHash == password);
         }
+
+        public bool IsEmailExist(string email)
+        {
+            return _context.Users.Any(x => x.Email == email);
+        }
+
+        public User CreateUser(User obj)
+        {
+            using (var db = new SkincareShopContext())
+            {
+                try
+                {
+                    db.Users.Add(obj);
+                    db.SaveChanges();
+                    return obj;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi khi tạo user: " + ex.Message);
+                    return null;
+                }
+            }
+        }
     }
 }

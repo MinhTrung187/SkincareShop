@@ -1,3 +1,4 @@
+
 CREATE DATABASE SkincareShop
 GO
 USE SkincareShop
@@ -159,6 +160,7 @@ CREATE TABLE [dbo].[Products](
 	[Stock] [int] NOT NULL,
 	[SkinTypeID] [int] NULL,
 	[ImageUrl] [nvarchar](500) NULL,
+	[IsDeleted] BIT NOT NULL DEFAULT 0,
 PRIMARY KEY CLUSTERED 
 (
 	[ProductID] ASC
@@ -244,26 +246,27 @@ SET IDENTITY_INSERT [dbo].[Feedback] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Products] ON 
 
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (1, N'Gel rửa mặt nhẹ nhàng', N'Làm sạch da mà không làm mất độ ẩm tự nhiên.', CAST(150000.00 AS Decimal(10, 2)), 50, 1, N'https://images.unsplash.com/photo-1556228578-8c89e6adf883')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (2, N'Kem dưỡng ẩm cân bằng', N'Giữ ẩm mà không gây bết dính.', CAST(200000.00 AS Decimal(10, 2)), 40, 1, N'https://images.unsplash.com/photo-1571781926291-c477ebfd024b')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (3, N'Toner cấp ẩm', N'Cung cấp độ ẩm và làm dịu da.', CAST(180000.00 AS Decimal(10, 2)), 35, 1, N'https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (4, N'Serum dưỡng sáng', N'Giúp da sáng khỏe, đều màu.', CAST(300000.00 AS Decimal(10, 2)), 25, 1, N'https://images.unsplash.com/photo-1596755094514-f87e34085b2c')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (5, N'Kem chống nắng dịu nhẹ', N'Bảo vệ da khỏi tia UV mà không gây nhờn.', CAST(250000.00 AS Decimal(10, 2)), 30, 1, N'https://images.pexels.com/photos/6621339/pexels-photo-6621339.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (6, N'Sữa rửa mặt kiểm soát dầu', N'Hỗ trợ giảm dầu thừa, giữ da sạch.', CAST(160000.00 AS Decimal(10, 2)), 50, 2, N'https://images.unsplash.com/photo-1631729371254-42d2890b8d83')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (7, N'Gel dưỡng kiểm soát nhờn', N'Giúp giảm bóng dầu và giữ da khô thoáng.', CAST(220000.00 AS Decimal(10, 2)), 40, 2, N'https://images.pexels.com/photos/4202924/pexels-photo-4202924.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (8, N'Toner se khít lỗ chân lông', N'Giúp kiểm soát dầu và thu nhỏ lỗ chân lông.', CAST(190000.00 AS Decimal(10, 2)), 35, 2, N'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (9, N'Serum trị mụn', N'Hỗ trợ ngăn ngừa và giảm mụn.', CAST(320000.00 AS Decimal(10, 2)), 25, 2, N'https://images.pexels.com/photos/6738588/pexels-photo-6738588.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (10, N'Kem chống nắng kiềm dầu', N'Giảm bóng dầu, bảo vệ da dưới ánh nắng.', CAST(270000.00 AS Decimal(10, 2)), 30, 2, N'https://images.unsplash.com/photo-1556228578-3a5c257abab3')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (11, N'Sữa rửa mặt dưỡng ẩm', N'Làm sạch nhẹ nhàng và cấp ẩm.', CAST(170000.00 AS Decimal(10, 2)), 50, 3, N'https://images.pexels.com/photos/4041391/pexels-photo-4041391.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (12, N'Kem dưỡng ẩm sâu', N'Dưỡng ẩm mạnh mẽ cho da khô.', CAST(240000.00 AS Decimal(10, 2)), 40, 3, N'https://images.unsplash.com/photo-1571781926291-c477ebfd024b')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (13, N'Toner dưỡng ẩm cao', N'Bổ sung độ ẩm giúp da mềm mại.', CAST(200000.00 AS Decimal(10, 2)), 35, 3, N'https://images.pexels.com/photos/4041393/pexels-photo-4041393.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (14, N'Serum cấp nước', N'Tăng cường độ ẩm và đàn hồi cho da.', CAST(330000.00 AS Decimal(10, 2)), 25, 3, N'https://images.unsplash.com/photo-1596755094514-f87e34085b2c')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (15, N'Kem chống nắng dưỡng ẩm', N'Vừa bảo vệ vừa cấp ẩm cho da khô.', CAST(280000.00 AS Decimal(10, 2)), 30, 3, N'https://images.pexels.com/photos/6621339/pexels-photo-6621339.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (16, N'Sữa rửa mặt dịu nhẹ', N'Giúp làm sạch mà không gây kích ứng.', CAST(180000.00 AS Decimal(10, 2)), 50, 4, N'https://images.unsplash.com/photo-1631729253089-467e08d2ca85')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (17, N'Kem dưỡng làm dịu', N'Giảm mẩn đỏ, giúp da thư giãn.', CAST(260000.00 AS Decimal(10, 2)), 40, 4, N'https://images.pexels.com/photos/4202925/pexels-photo-4202925.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (18, N'Toner làm dịu', N'Cân bằng da, giảm kích ứng.', CAST(210000.00 AS Decimal(10, 2)), 35, 4, N'https://images.unsplash.com/photo-1625772452549-1b335d2f4a23')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (19, N'Serum phục hồi da', N'Hỗ trợ tái tạo và bảo vệ da.', CAST(340000.00 AS Decimal(10, 2)), 25, 4, N'https://images.pexels.com/photos/4041394/pexels-photo-4041394.jpeg')
-INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl]) VALUES (20, N'Kem chống nắng cho da nhạy cảm', N'Bảo vệ da mà không gây kích ứng.', CAST(290000.00 AS Decimal(10, 2)), 30, 4, N'https://images.unsplash.com/photo-1571781926291-c477ebfd024b')
+INSERT [dbo].[Products] ([ProductID], [Name], [Description], [Price], [Stock], [SkinTypeID], [ImageUrl], [IsDeleted]) VALUES 
+(1, N'Gel rửa mặt nhẹ nhàng', N'Làm sạch da mà không làm mất độ ẩm tự nhiên.', 150000.00, 50, 1, N'https://images.unsplash.com/photo-1556228578-8c89e6adf883', 0),
+(2, N'Kem dưỡng ẩm cân bằng', N'Giữ ẩm mà không gây bết dính.', 200000.00, 40, 1, N'https://images.unsplash.com/photo-1571781926291-c477ebfd024b', 0),
+(3, N'Toner cấp ẩm', N'Cung cấp độ ẩm và làm dịu da.', 180000.00, 35, 1, N'https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg', 0),
+(4, N'Serum dưỡng sáng', N'Giúp da sáng khỏe, đều màu.', 300000.00, 25, 1, N'https://images.unsplash.com/photo-1596755094514-f87e34085b2c', 0),
+(5, N'Kem chống nắng dịu nhẹ', N'Bảo vệ da khỏi tia UV mà không gây nhờn.', 250000.00, 30, 1, N'https://images.pexels.com/photos/6621339/pexels-photo-6621339.jpeg', 0),
+(6, N'Sữa rửa mặt kiểm soát dầu', N'Hỗ trợ giảm dầu thừa, giữ da sạch.', 160000.00, 50, 2, N'https://images.unsplash.com/photo-1631729371254-42d2890b8d83', 0),
+(7, N'Gel dưỡng kiểm soát nhờn', N'Giúp giảm bóng dầu và giữ da khô thoáng.', 220000.00, 40, 2, N'https://images.pexels.com/photos/4202924/pexels-photo-4202924.jpeg', 0),
+(8, N'Toner se khít lỗ chân lông', N'Giúp kiểm soát dầu và thu nhỏ lỗ chân lông.', 190000.00, 35, 2, N'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137', 0),
+(9, N'Serum trị mụn', N'Hỗ trợ ngăn ngừa và giảm mụn.', 320000.00, 25, 2, N'https://images.pexels.com/photos/6738588/pexels-photo-6738588.jpeg', 0),
+(10, N'Kem chống nắng kiềm dầu', N'Giảm bóng dầu, bảo vệ da dưới ánh nắng.', 270000.00, 30, 2, N'https://images.unsplash.com/photo-1556228578-3a5c257abab3', 0),
+(11, N'Sữa rửa mặt dưỡng ẩm', N'Làm sạch nhẹ nhàng và cấp ẩm.', 170000.00, 50, 3, N'https://images.pexels.com/photos/4041391/pexels-photo-4041391.jpeg', 0),
+(12, N'Kem dưỡng ẩm sâu', N'Dưỡng ẩm mạnh mẽ cho da khô.', 240000.00, 40, 3, N'https://images.unsplash.com/photo-1571781926291-c477ebfd024b', 0),
+(13, N'Toner dưỡng ẩm cao', N'Bổ sung độ ẩm giúp da mềm mại.', 200000.00, 35, 3, N'https://images.pexels.com/photos/4041393/pexels-photo-4041393.jpeg', 0),
+(14, N'Serum cấp nước', N'Tăng cường độ ẩm và đàn hồi cho da.', 330000.00, 25, 3, N'https://images.unsplash.com/photo-1596755094514-f87e34085b2c', 0),
+(15, N'Kem chống nắng dưỡng ẩm', N'Vừa bảo vệ vừa cấp ẩm cho da khô.', 280000.00, 30, 3, N'https://images.pexels.com/photos/6621339/pexels-photo-6621339.jpeg', 0),
+(16, N'Sữa rửa mặt dịu nhẹ', N'Giúp làm sạch mà không gây kích ứng.', 180000.00, 50, 4, N'https://images.unsplash.com/photo-1631729253089-467e08d2ca85', 0),
+(17, N'Kem dưỡng làm dịu', N'Giảm mẩn đỏ, giúp da thư giãn.', 260000.00, 40, 4, N'https://images.pexels.com/photos/4202925/pexels-photo-4202925.jpeg', 0),
+(18, N'Toner làm dịu', N'Cân bằng da, giảm kích ứng.', 210000.00, 35, 4, N'https://images.unsplash.com/photo-1625772452549-1b335d2f4a23', 0),
+(19, N'Serum phục hồi da', N'Hỗ trợ tái tạo và bảo vệ da.', 340000.00, 25, 4, N'https://images.pexels.com/photos/4041394/pexels-photo-4041394.jpeg', 0),
+(20, N'Kem chống nắng cho da nhạy cảm', N'Bảo vệ da mà không gây kích ứng.', 290000.00, 30, 4, N'https://images.unsplash.com/photo-1571781926291-c477ebfd024b', 0);
 SET IDENTITY_INSERT [dbo].[Products] OFF
 GO
 SET IDENTITY_INSERT [dbo].[SkinTypes] ON 

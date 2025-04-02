@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkincareShop"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" Background="HotPink">
+        Title="LoginWindow" Height="450" Width="800" Background="HotPink" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="LOGIN WINDOW" HorizontalAlignment="Left" Height="45" Margin="265,99,0,0" VerticalAlignment="Top" Width="260" Foreground="Black" FontSize="30" FontWeight="ExtraBlack"/>
         <Label Content="Email" HorizontalAlignment="Left" Height="34" Margin="110,194,0,0" VerticalAlignment="Top" Width="55" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.545,0.707"/>

@@ -53,7 +53,7 @@ public partial class SkincareShopContext : DbContext
     {
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7976164279B");
+            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD797EB040888");
 
             entity.ToTable("Cart");
 
@@ -67,16 +67,16 @@ public partial class SkincareShopContext : DbContext
             entity.HasOne(d => d.Product).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cart__ProductID__398D8EEE");
+                .HasConstraintName("FK__Cart__ProductID__3A81B327");
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__UserID__3A81B327");
+                .HasConstraintName("FK__Cart__UserID__3B75D760");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDF6B2AC47EE");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDF6BDE45289");
 
             entity.ToTable("Feedback");
 
@@ -90,17 +90,17 @@ public partial class SkincareShopContext : DbContext
             entity.HasOne(d => d.Product).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Feedback__Produc__3B75D760");
+                .HasConstraintName("FK__Feedback__Produc__3C69FB99");
 
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Feedback__UserID__3C69FB99");
+                .HasConstraintName("FK__Feedback__UserID__3D5E1FD2");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF2B8442D6");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF3F533544");
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.OrderDate)
@@ -113,12 +113,12 @@ public partial class SkincareShopContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Orders__UserID__3F466844");
+                .HasConstraintName("FK__Orders__UserID__403A8C7D");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CCAB5D305");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30C0A295DEA");
 
             entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
@@ -127,17 +127,17 @@ public partial class SkincareShopContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderDeta__Order__3D5E1FD2");
+                .HasConstraintName("FK__OrderDeta__Order__3E52440B");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Produ__3E52440B");
+                .HasConstraintName("FK__OrderDeta__Produ__3F466844");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6ED318728FF");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6EDF07576DB");
 
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.ImageUrl).HasMaxLength(500);
@@ -147,12 +147,12 @@ public partial class SkincareShopContext : DbContext
 
             entity.HasOne(d => d.SkinType).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SkinTypeId)
-                .HasConstraintName("FK__Products__SkinTy__403A8C7D");
+                .HasConstraintName("FK__Products__SkinTy__412EB0B6");
         });
 
         modelBuilder.Entity<SkinType>(entity =>
         {
-            entity.HasKey(e => e.SkinTypeId).HasName("PK__SkinType__D5D2962BE59C58D0");
+            entity.HasKey(e => e.SkinTypeId).HasName("PK__SkinType__D5D2962BA4B6B444");
 
             entity.Property(e => e.SkinTypeId).HasColumnName("SkinTypeID");
             entity.Property(e => e.Name).HasMaxLength(100);
@@ -160,7 +160,7 @@ public partial class SkincareShopContext : DbContext
 
         modelBuilder.Entity<TestAnswer>(entity =>
         {
-            entity.HasKey(e => e.AnswerId).HasName("PK__TestAnsw__D48250246B6EEDCB");
+            entity.HasKey(e => e.AnswerId).HasName("PK__TestAnsw__D48250249F51DF8E");
 
             entity.Property(e => e.AnswerId).HasColumnName("AnswerID");
             entity.Property(e => e.QuestionId).HasColumnName("QuestionID");
@@ -169,25 +169,25 @@ public partial class SkincareShopContext : DbContext
             entity.HasOne(d => d.Question).WithMany(p => p.TestAnswers)
                 .HasForeignKey(d => d.QuestionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TestAnswe__Quest__412EB0B6");
+                .HasConstraintName("FK__TestAnswe__Quest__4222D4EF");
 
             entity.HasOne(d => d.SkinType).WithMany(p => p.TestAnswers)
                 .HasForeignKey(d => d.SkinTypeId)
-                .HasConstraintName("FK__TestAnswe__SkinT__4222D4EF");
+                .HasConstraintName("FK__TestAnswe__SkinT__4316F928");
         });
 
         modelBuilder.Entity<TestQuestion>(entity =>
         {
-            entity.HasKey(e => e.QuestionId).HasName("PK__TestQues__0DC06F8CB7AFD6E8");
+            entity.HasKey(e => e.QuestionId).HasName("PK__TestQues__0DC06F8C979350E5");
 
             entity.Property(e => e.QuestionId).HasColumnName("QuestionID");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC00B1FE9C");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC43A3A940");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D105344E30D3DB").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534B22D1662").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.CreatedAt)

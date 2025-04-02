@@ -19,7 +19,7 @@ namespace DAL.Repositories
 
         public List<Product> SearchProduct(string searchText)
         {
-            var searchProducts = _context.Products.Where(p => p.Name.Contains(searchText)).ToList();
+            var searchProducts = _context.Products.Where(p => p.Name.Contains(searchText) && !p.IsDeleted).ToList();
             return searchProducts;
         }
 
@@ -37,7 +37,7 @@ namespace DAL.Repositories
 
         public List<Product> GetAllProducts()
         {
-            return _context.Products.Include(p => p.SkinType).ToList();
+            return _context.Products.Include(p => p.SkinType).Where(p => !p.IsDeleted).ToList();
         }
 
         public Product? UpdateProduct(Product product)
@@ -56,8 +56,8 @@ namespace DAL.Repositories
         {
             var product = GetProductById(productId);
 
-            _context.Remove(product);
-            _context.SaveChangesAsync();
+            product.IsDeleted = true;
+            _context.SaveChanges();
         }
     }
 }

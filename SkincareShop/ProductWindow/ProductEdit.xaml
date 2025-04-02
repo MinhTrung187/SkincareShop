@@ -12,7 +12,8 @@
             <TextBox x:Name="DescriptionTextBox" Width="200" Margin="5" Text="Description" Height="160" TextWrapping="Wrap" AcceptsReturn="True"/>
             <TextBox x:Name="PriceTextBox" Width="200" Margin="5" Text="Price"/>
             <TextBox x:Name="StockTextBox" Width="200" Margin="5" Text="Stock"/>
-            <TextBox x:Name="SkinTypeTextBox" Width="200" Margin="5" Text="Skin Type"/>
+            <TextBlock Text="SkinType:" Margin="5"/>
+            <ComboBox x:Name="SkinTypeComboBox" Width="200" Margin="5" DisplayMemberPath="Name" SelectedValuePath="SkinTypeId"/>
             <TextBox x:Name="ImageUrlTextBox" Width="200" Margin="5" Text="Image URL"/>
             <Button Content="Save" Click="SaveButton_Click" Margin="5"/>
         </StackPanel>

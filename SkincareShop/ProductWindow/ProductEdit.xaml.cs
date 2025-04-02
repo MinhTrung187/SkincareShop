@@ -23,12 +23,15 @@ namespace SkincareShop.ProductWindow
     {
         private readonly ProductService _productService;
         private readonly Product? _product;
+        private readonly SkinTypeService _skinTypeService;
 
         public ProductEdit(ProductService productService, Product? product = null)
         {
             InitializeComponent();
             _productService = productService;
+            _skinTypeService = new SkinTypeService();
             _product = product;
+            LoadSkinTypes();
 
             if (_product != null)
             {
@@ -36,9 +39,15 @@ namespace SkincareShop.ProductWindow
                 DescriptionTextBox.Text = _product.Description;
                 PriceTextBox.Text = _product.Price.ToString();
                 StockTextBox.Text = _product.Stock.ToString();
-                SkinTypeTextBox.Text = _product.SkinType?.Name;
+                SkinTypeComboBox.SelectedValue = _product.SkinTypeId;
                 ImageUrlTextBox.Text = _product.ImageUrl;
             }
+        }
+
+        private void LoadSkinTypes()
+        {
+            var skinTypes = _skinTypeService.GetAllSkinTypes();
+            SkinTypeComboBox.ItemsSource = skinTypes;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -51,6 +60,7 @@ namespace SkincareShop.ProductWindow
                     Description = DescriptionTextBox.Text,
                     Price = decimal.Parse(PriceTextBox.Text),
                     Stock = int.Parse(StockTextBox.Text),
+                    SkinTypeId = (int?)SkinTypeComboBox.SelectedValue,
                     ImageUrl = ImageUrlTextBox.Text
                 };
                 _productService.AddProduct(newProduct);
@@ -61,6 +71,7 @@ namespace SkincareShop.ProductWindow
                 _product.Description = DescriptionTextBox.Text;
                 _product.Price = decimal.Parse(PriceTextBox.Text);
                 _product.Stock = int.Parse(StockTextBox.Text);
+                _product.SkinTypeId = (int?)SkinTypeComboBox.SelectedValue;
                 _product.ImageUrl = ImageUrlTextBox.Text;
                 _productService.UpdateProduct(_product);
             }

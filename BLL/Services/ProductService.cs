@@ -2,6 +2,7 @@
 using DAL.Repositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace BLL.Services
 
         public Product AddProduct(Product product)
         {
+            ValidateProduct(product);
             return _productRepository.AddProduct(product);
         }
 
@@ -39,12 +41,19 @@ namespace BLL.Services
 
         public Product? UpdateProduct(Product product)
         {
+            ValidateProduct(product);
             return _productRepository.UpdateProduct(product);
         }
 
         public void DeleteProduct(int productId)
         {
             _productRepository.DeleteProduct(productId);
+        }
+
+        private void ValidateProduct(Product product)
+        {
+            var validationContext = new ValidationContext(product);
+            Validator.ValidateObject(product, validationContext, validateAllProperties: true);
         }
     }
 }

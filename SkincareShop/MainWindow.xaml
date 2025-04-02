@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkincareShop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterOwner">
     <Grid>
         <Label Content="Day la trang ban quat" HorizontalAlignment="Center" Height="110" Margin="0,149,0,0" VerticalAlignment="Top" Width="660" FontSize="60" FontWeight="ExtraBlack"/>
 

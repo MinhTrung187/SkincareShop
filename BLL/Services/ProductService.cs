@@ -57,5 +57,9 @@ namespace BLL.Services
             var validationContext = new ValidationContext(product);
             Validator.ValidateObject(product, validationContext, validateAllProperties: true);
         }
+        public List<Product> GetProductsBySkinType(int skinTypeId)
+        {
+            return _productRepository.GetProductsBySkinType(skinTypeId);
+        }
     }
 }

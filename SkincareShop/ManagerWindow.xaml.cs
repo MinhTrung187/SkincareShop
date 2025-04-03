@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using SkincareShop.ProductWindow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,18 +55,26 @@ namespace SkincareShop
             loginWindow.Show();
             this.Close();
         }
-        private User? _currentUser;
-        public ManagerWindow(User user)
-        {
-            _currentUser = user;
-            InitializeComponent();
-        }
+        //private User? _currentUser;
+        //public ManagerWindow(User user)
+        //{
+        //    _currentUser = user;
+        //    InitializeComponent();
+        //}
 
-        private void ManageUser_Click(object sender, RoutedEventArgs e)
+        private void ManageUserButton_Click(object sender, RoutedEventArgs e)
         {
             UserListWindow userListWindow = new UserListWindow();
             userListWindow.ShowDialog();
+
         }
+
+        private void ManageProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            var productMenu = new ProductMenu();
+            productMenu.Show();
+        }
+
 
     }
 }

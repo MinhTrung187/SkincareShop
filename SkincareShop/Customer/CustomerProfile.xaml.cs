@@ -1,6 +1,5 @@
 ﻿using BLL.Services;
 using DAL.Entities;
-using SkincareShop.BLL;
 using SkincareShop.Models;
 using SkincareShop.Services;
 using System;
@@ -35,15 +34,16 @@ namespace SkincareShop.Customer
             _userId = id;
             _Userservice = new UserService();
             orderService = new OrderService();
-            LoadCustomerData();
-            //LoadOrderHistory();
+
         }
         private void LoadCustomerData()
         {
             var user = _Userservice.GetUserById(_userId);
-            DataContext = user;
-      
+            txtFullName.Text = user.FullName;
+            txtEmail.Text = user.Email;
+            txtCreatedAt.Text=user.CreatedAt.ToString();
 
+            //DataContext = user;
         }
         private void LoadOrderHistory()
         {
@@ -53,6 +53,13 @@ namespace SkincareShop.Customer
 
         private void SaveProfile_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadCustomerData();
+            LoadOrderHistory();
 
         }
     }

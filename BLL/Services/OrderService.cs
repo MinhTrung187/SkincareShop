@@ -1,5 +1,7 @@
-﻿using DAL.Entities;
+﻿using DAL;
+using DAL.Entities;
 using DAL.Repositories;
+using SkincareShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +23,16 @@ namespace BLL.Services
         {
             return _orderRepository.GetAllOrdersWithDetails();
         }
-    }
 
+
+        public List<OrderHistoryItem> GetOrderHistory(int userId)
+        {
+            return _orderRepository.GetOrderHistoryByUserId(userId);
+        }
+        public List<Order> GetOrderByUserId(int userId)
+        {
+            return _orderRepository.GetOrderByUserId(userId);
+        }
         public bool PlaceOrder(int userId, int productId, int quantity)
         {
             using (var context = new SkincareShopContext())
@@ -63,17 +73,16 @@ namespace BLL.Services
                     transaction.Rollback();
                     throw new Exception("Lỗi khi đặt hàng: " + ex.Message);
                 }
+
+
             }
+
+
         }
-        public List<OrderHistoryItem> GetOrderHistory(int userId)
-        {
-            return _orderRepository.GetOrderHistoryByUserId(userId);
-        }
-        public List<Order> GetOrderByUserId(int userId)
-        {
-            return _orderRepository.GetOrderByUserId(userId);
-        }
-        
     }
+}
+
+        
+    
     
 

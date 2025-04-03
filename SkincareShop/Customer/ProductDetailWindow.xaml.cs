@@ -1,6 +1,5 @@
 ﻿using DAL.Entities;
 using DAL;
-using SkincareShop.BLL;
 using SkincareShop.Services;
 using System;
 using System.Collections.Generic;
@@ -17,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using BLL.Services;
 namespace SkincareShop.Customer
 {
     /// <summary>

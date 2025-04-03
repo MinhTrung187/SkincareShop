@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using SkincareShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace DAL.Repositories
 {
     public class OrderRepository
     {
-        private readonly SkincareShopContext _context;
+        private SkincareShopContext _context;
 
         public OrderRepository()
         {
@@ -103,6 +104,8 @@ namespace DAL.Repositories
             .Where(p => p.UserId == userId)
             .ToList();
         }
+
+
 
     }
 }

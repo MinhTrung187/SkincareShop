@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using SkincareShop.ProductWindow;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,7 @@ namespace SkincareShop
         {
             var productMenu = new ProductMenu();
             productMenu.Show();
+        }
 
         private void ManageUser_Click(object sender, RoutedEventArgs e)
         {
@@ -36,4 +38,3 @@ namespace SkincareShop
         }
     }
     }
-}

@@ -22,11 +22,13 @@ namespace SkincareShop.Customer
     public partial class ProductListWindow : Window
     {
         private readonly ProductService _service;
+        private readonly int _userId;
 
-        public ProductListWindow()
+        public ProductListWindow(int userId)
         {
             InitializeComponent();
             _service = new ProductService();
+            _userId = userId;
             LoadProducts();
         }
 
@@ -51,7 +53,7 @@ namespace SkincareShop.Customer
         {
             if (ProductListView.SelectedItem is Product selectedProduct)
             {
-                ProductDetailWindow detailWindow = new ProductDetailWindow(selectedProduct.ProductId);
+                ProductDetailWindow detailWindow = new ProductDetailWindow(_userId,selectedProduct.ProductId);
                 detailWindow.ShowDialog();
             }
         }

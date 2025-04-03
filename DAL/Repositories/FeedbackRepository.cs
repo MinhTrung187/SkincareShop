@@ -18,6 +18,7 @@ namespace SkincareShop.Repositories
         public List<Feedback> GetFeedbacksByProductId(int productId)
         {
             return _context.Feedbacks
+                .Include(f => f.User) 
                 .Where(f => f.ProductId == productId)
                 .OrderByDescending(f => f.CreatedAt)
                 .ToList();

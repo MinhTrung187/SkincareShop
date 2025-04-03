@@ -50,7 +50,7 @@ namespace SkincareShop
             {
                 if (user.Role == "Customer")
                 {
-                    Customer.CustomerWindow customerWindow = new Customer.CustomerWindow();
+                    Customer.CustomerWindow customerWindow = new Customer.CustomerWindow(user.UserId);
                     customerWindow.Show();
                 }
                 else

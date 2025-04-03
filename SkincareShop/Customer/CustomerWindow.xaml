@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="Welcome to SkincareShop" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFFAF3E0">
+        
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Welcome to SkincareShop!" FontSize="24" FontWeight="Bold" Foreground="#FF5733" Margin="0,0,0,20" TextAlignment="Center"/>
             <TextBlock Text="Find the best skincare products tailored to your skin type." FontSize="16" Margin="0,0,0,30" TextAlignment="Center"/>
-
+            
             <Button Content="Take a Skin Test" Width="200" Height="50" Background="#FF5733" Foreground="White"
                     FontSize="16" Cursor="Hand" Click="SkinTest_Click"/>
 

@@ -19,9 +19,11 @@ namespace SkincareShop.Customer
     /// </summary>
     public partial class CustomerWindow : Window
     {
-        public CustomerWindow()
+        private readonly int _userId;
+        public CustomerWindow(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void SkinTest_Click(object sender, RoutedEventArgs e)
@@ -33,7 +35,7 @@ namespace SkincareShop.Customer
 
         private void Skip_Click(object sender, RoutedEventArgs e)
         {
-            ProductListWindow testWindow = new ProductListWindow();
+            ProductListWindow testWindow = new ProductListWindow(_userId);
             testWindow.ShowDialog();
 
         }

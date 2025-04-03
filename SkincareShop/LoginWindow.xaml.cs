@@ -31,29 +31,42 @@ namespace SkincareShop
         {
             string email = EmailTextBox.Text.Trim();
             string password = PasswordTextBox.Text.Trim();
+
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập email và mật khẩu!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("Email không hợp lệ!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             var user = _userService.GetUser(email, password);
+
             if (user != null)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
+                if (user.Role == "Customer")
+                {
+                    Customer.CustomerWindow customerWindow = new Customer.CustomerWindow();
+                    customerWindow.Show();
+                }
+                else
+                {
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                }
+
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Email hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
+
 
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

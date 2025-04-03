@@ -1,5 +1,7 @@
 ﻿using DAL.Entities;
 using DAL;
+using SkincareShop;
+using SkincareShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -9,6 +11,8 @@ namespace SkincareShop.DAL
     public class OrderRepository
     {
         private SkincareShopContext _context;
+
+
 
         public int CreateOrder(int userId, decimal totalAmount)
         {
@@ -64,5 +68,24 @@ namespace SkincareShop.DAL
             var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
             return product?.Price ?? 0;
         }
+
+        public List<OrderHistoryItem> GetOrderHistoryByUserId(int userId)
+        {
+            var query = from order in _context.Orders
+                        join orderDetail in _context.OrderDetails on order.OrderId equals orderDetail.OrderId
+                        join product in _context.Products on orderDetail.ProductId equals product.ProductId
+                        where order.UserId == userId
+                        select new OrderHistoryItem
+                        {
+                            OrderDate = order.OrderDate ?? DateTime.Now, 
+                            ProductName = product.Name,
+                            Quantity = orderDetail.Quantity,
+                            Price = orderDetail.Price,
+                            ImageUrl = product.ImageUrl
+                        };
+
+            return query.ToList();
+        }
+
     }
 }

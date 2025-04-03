@@ -1,5 +1,6 @@
 ﻿using DAL;
 using SkincareShop.DAL;
+using SkincareShop.Models;
 using System;
 
 namespace SkincareShop.BLL
@@ -54,6 +55,10 @@ namespace SkincareShop.BLL
                     throw new Exception("Lỗi khi đặt hàng: " + ex.Message);
                 }
             }
+        }
+        public List<OrderHistoryItem> GetOrderHistory(int userId)
+        {
+            return _orderRepository.GetOrderHistoryByUserId(userId);
         }
     }
 }

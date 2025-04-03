@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Welcome to SkincareShop" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="#FFFAF3E0">
+        <Button Content="View Profile" Width="120" Height="40" Background="#4CAF50" Foreground="White"
+        FontSize="14" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top"
+        Margin="10" Click="Profile_Click"/>
         
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Welcome to SkincareShop!" FontSize="24" FontWeight="Bold" Foreground="#FF5733" Margin="0,0,0,20" TextAlignment="Center"/>

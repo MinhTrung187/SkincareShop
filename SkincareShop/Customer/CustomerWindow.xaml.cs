@@ -39,5 +39,12 @@ namespace SkincareShop.Customer
             testWindow.ShowDialog();
 
         }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerProfile customerProfile = new CustomerProfile(_userId);
+            customerProfile.ShowDialog();
+
+        }
     }
 }

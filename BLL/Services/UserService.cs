@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,15 @@ namespace BLL.Services
                 CreatedAt = DateTime.Now
             };
             return _userRepository.CreateUser(newUser);
+        }
+        public User GetUserById(int userId)
+        {
+            return _userRepository.GetUserById(userId);
+        }
+        public void UpdateUser(User user)
+        {
+            _userRepository.UpdateUser(user);
+       
         }
     }
 }

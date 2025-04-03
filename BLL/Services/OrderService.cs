@@ -79,6 +79,11 @@ namespace BLL.Services
 
 
         }
+
+        public List<Order> GetOrdersByUserId(int userId)
+        {
+            return _orderRepository.GetOrdersByUserId(userId);
+        }
     }
 }
 

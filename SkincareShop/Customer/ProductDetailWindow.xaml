@@ -40,6 +40,10 @@
         <Button x:Name="OrderButton" Grid.Row="2" Content="Đặt Hàng" Width="100" Height="30" 
                 HorizontalAlignment="Right" Margin="0,0,0,20" Click="OrderButton_Click"/>
 
+        <Button x:Name="FeedbackButton" Grid.Row="2" Content="Viết Đánh Giá" Width="120" Height="30"
+        HorizontalAlignment="Left" Margin="0,0,10,20" Click="FeedbackButton_Click"/>
+
+
         <!-- Danh sách feedback -->
         <StackPanel Grid.Row="3">
             <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10" Text="Đánh Giá Sản Phẩm"/>

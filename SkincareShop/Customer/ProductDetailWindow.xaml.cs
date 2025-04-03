@@ -96,5 +96,24 @@ namespace SkincareShop.Customer
             Regex regex = new Regex("[^0-9]+"); 
             return !regex.IsMatch(text);
         }
+
+        private bool HasPurchasedProduct(int userId, int productId)
+        {
+            var orders = _orderService.GetOrdersByUserId(userId);
+            return orders.Any(o => o.OrderDetails.Any(od => od.ProductId == productId));
+        }
+
+        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!HasPurchasedProduct(_userId, _productId))
+            {
+                MessageBox.Show("Bạn chưa mua sản phẩm này.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            CreateFeedbackWindow feedbackWindow = new CreateFeedbackWindow(_userId, _productId);
+            feedbackWindow.ShowDialog();
+            LoadFeedbacks();
+        }
     }
 }

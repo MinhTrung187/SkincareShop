@@ -105,7 +105,14 @@ namespace DAL.Repositories
             .ToList();
         }
 
-
+        public List<Order> GetOrdersByUserId(int userId)
+        {
+            using var context = new SkincareShopContext();
+            return context.Orders
+                .Include(o => o.OrderDetails)
+                .Where(o => o.UserId == userId)
+                .ToList();
+        }
 
     }
 }

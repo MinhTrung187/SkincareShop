@@ -23,5 +23,20 @@ namespace SkincareShop.Repositories
                 .OrderByDescending(f => f.CreatedAt)
                 .ToList();
         }
+
+        public void AddFeedback(int userId, int productId, int rating, string comment)
+        {
+            using var context = new SkincareShopContext();
+            var feedback = new Feedback
+            {
+                UserId = userId,
+                ProductId = productId,
+                Rating = rating,
+                Comment = comment,
+                CreatedAt = DateTime.Now
+            };
+            context.Feedbacks.Add(feedback);
+            context.SaveChanges();
+        }
     }
 }

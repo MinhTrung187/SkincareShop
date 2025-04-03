@@ -33,6 +33,8 @@ namespace SkincareShop.Customer
 
         private void Skip_Click(object sender, RoutedEventArgs e)
         {
+            ProductListWindow testWindow = new ProductListWindow();
+            testWindow.ShowDialog();
 
         }
     }

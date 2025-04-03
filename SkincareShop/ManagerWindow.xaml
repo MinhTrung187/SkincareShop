@@ -19,4 +19,8 @@
         <Button x:Name="ManageOrderButton" Content="Manage Order" HorizontalAlignment="Center" Height="65" Margin="0,224,0,0" VerticalAlignment="Top" Width="240" Click="ManageOrderButton_Click" FontWeight="Bold"/>
         <Button x:Name="LogoutButton" Content="Logout" HorizontalAlignment="Left" Height="40" Margin="640,344,0,0" VerticalAlignment="Top" Width="80" Click="LogoutButton_Click"/>
     </Grid>
+        Title="ManagerWindow" Height="450" Width="800">
+    <StackPanel VerticalAlignment="Center">
+        <Button Content="Manage User" Width="150" Height="40" Click="ManageUser_Click"/>
+    </StackPanel>
 </Window>

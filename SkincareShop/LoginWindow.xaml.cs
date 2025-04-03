@@ -71,7 +71,7 @@ namespace SkincareShop
 
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            RegisterUserWindow registerUserWindow = new RegisterUserWindow();
+            RegisterUserWindow registerUserWindow = new RegisterUserWindow(isEditing: false);
             registerUserWindow.Show();
             this.Close();
         }

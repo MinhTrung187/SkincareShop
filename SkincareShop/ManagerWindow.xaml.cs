@@ -54,5 +54,18 @@ namespace SkincareShop
             loginWindow.Show();
             this.Close();
         }
+        private User? _currentUser;
+        public ManagerWindow(User user)
+        {
+            _currentUser = user;
+            InitializeComponent();
+        }
+
+        private void ManageUser_Click(object sender, RoutedEventArgs e)
+        {
+            UserListWindow userListWindow = new UserListWindow();
+            userListWindow.ShowDialog();
+        }
+
     }
 }

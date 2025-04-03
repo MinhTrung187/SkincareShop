@@ -1,4 +1,4 @@
-﻿using SkincareShop.ProductWindow;
+﻿using DAL.Entities;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,8 +17,10 @@ namespace SkincareShop
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private User? _currentUser;
+        public MainWindow(User user)
         {
+            _currentUser = user;
             InitializeComponent();
         }
 
@@ -26,6 +28,12 @@ namespace SkincareShop
         {
             var productMenu = new ProductMenu();
             productMenu.Show();
+
+        private void ManageUser_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterUserWindow registerUserWindow = new RegisterUserWindow(isEditing: true, _currentUser);
+            registerUserWindow.ShowDialog();
         }
+    }
     }
 }

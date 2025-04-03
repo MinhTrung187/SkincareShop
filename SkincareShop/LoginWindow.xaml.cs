@@ -44,9 +44,18 @@ namespace SkincareShop
             var user = _userService.GetUser(email, password);
             if (user != null)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
+                if(user.Role.Equals("Customer"))
+                {
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    ManagerWindow managerWindow = new ManagerWindow(user);
+                    managerWindow.Show();
+                    this.Close();
+                }
             }
             else
             {

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Customer Profile" Height="500" Width="800" WindowStartupLocation="CenterScreen" Background="#F9F9F9" Loaded="Window_Loaded">
+        Title="Customer Profile" Height="500" Width="800" WindowStartupLocation="CenterScreen" Background="#F9F9F9">
 
     <Grid>
         <TabControl Background="White" Padding="10">
@@ -31,12 +31,12 @@
             <TabItem Header="History">
                 <StackPanel Margin="20">
                     <TextBlock Text="Order History" FontSize="22" FontWeight="Bold" Foreground="#FF5733" Margin="0,0,0,20"/>
-                    <ListView Name="lvOrderHistory" BorderThickness="1" BorderBrush="Gray" >
+                    <ListView x:Name="lvOrderHistory" BorderThickness="1" BorderBrush="Gray" ItemsSource="{Binding OrderHistory}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding OrderDate}"/>
                                 <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding ProductName}"/>
-                                <GridViewColumn Header="Quantity" Width="100" DisplayMemberBinding="{Binding TotalAmount}"/>
+                                <GridViewColumn Header="Quantity" Width="100" DisplayMemberBinding="{Binding Quantity}"/>
                                 <GridViewColumn Header="Price" Width="120" DisplayMemberBinding="{Binding Price}"/>
                                 <GridViewColumn Header="Image">
                                     <GridViewColumn.CellTemplate>

@@ -34,6 +34,8 @@ namespace BLL.Services
             return _productRepository.GetProductById(productId);
         }
 
+
+
         public List<Product> GetAllProducts()
         {
             return _productRepository.GetAllProducts();

@@ -59,5 +59,11 @@ namespace DAL.Repositories
             product.IsDeleted = true;
             _context.SaveChanges();
         }
+                public List<Product> GetProductsBySkinType(int skinTypeId)
+        {
+            return _context.Products
+                .Where(p => p.SkinTypeId == skinTypeId && p.IsDeleted == false)
+                .ToList();
+        }
     }
 }

@@ -30,25 +30,28 @@ namespace SkincareShop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text.Trim();
-            string password = PasswordTextBox.Text.Trim();
+            string password = PasswordTextBox.Password.Trim();
+
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập email và mật khẩu!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("Email không hợp lệ!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             var user = _userService.GetUser(email, password);
+
             if (user != null)
             {
-                if(user.Role.Equals("Customer"))
+                if (user.Role == "Customer")
                 {
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
+                    Customer.CustomerWindow customerWindow = new Customer.CustomerWindow(user.UserId);
+                    customerWindow.Show();
                 }
                 else
                 {
@@ -56,13 +59,15 @@ namespace SkincareShop
                     managerWindow.Show();
                     this.Close();
                 }
+
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Email hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
+
 
         private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -5,17 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkincareShop"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" Background="HotPink" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Label Content="LOGIN WINDOW" HorizontalAlignment="Left" Height="45" Margin="265,99,0,0" VerticalAlignment="Top" Width="260" Foreground="Black" FontSize="30" FontWeight="ExtraBlack"/>
-        <Label Content="Email" HorizontalAlignment="Left" Height="34" Margin="110,194,0,0" VerticalAlignment="Top" Width="55" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.545,0.707"/>
-        <Label Content="Password" HorizontalAlignment="Left" Height="34" Margin="110,274,0,0" VerticalAlignment="Top" Width="90" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.545,0.707"/>
-        <TextBox x:Name="EmailTextBox" TextWrapping="Wrap"  Margin="240,184,240,210" TextAlignment="Left"/>
-        <TextBox x:Name="PasswordTextBox" TextWrapping="Wrap"  Margin="240,264,240,130" TextAlignment="Left"/>
-        <Button Content="Login" Margin="240,344,440,50" FontWeight="ExtraBlack" Background="Green" Click="Button_Click"/>
-        <Button Content="Quit" Margin="440,344,240,50" FontWeight="ExtraBlack" Background="Red" Click="QuitButton_Click"/>
-        <Label Content="You do not have an account?" HorizontalAlignment="Left" Height="25" Margin="245,314,0,0" VerticalAlignment="Top" Width="145" FontWeight="Bold" FontSize="10"/>
-        <Label Content="Click here" HorizontalAlignment="Left" Height="25" Margin="385,314,0,0" VerticalAlignment="Top" Width="65" FontWeight="Bold" FontSize="10" Foreground="Blue" Cursor="Hand" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
+        Title="LoginWindow" Height="450" Width="800" Background="#FFF5F8"
+        WindowStartupLocation="CenterScreen">
 
+    <Grid>
+        <Border Background="#FFFFFF" CornerRadius="15" Padding="20" Margin="150,10,150,10" BorderBrush="#FFC1E3" BorderThickness="2">
+            <StackPanel>
+                <TextBlock Text="Welcome Back!" FontSize="28" FontWeight="Bold" Foreground="#D63384" TextAlignment="Center" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Email" FontSize="16" FontWeight="Bold" Foreground="#A52A5B" Margin="5,10,0,5"/>
+                <TextBox x:Name="EmailTextBox" Height="35" BorderThickness="1" BorderBrush="#FFC1E3" Padding="5" Background="#FFF0F5"/>
+
+                <TextBlock Text="Password" FontSize="16" FontWeight="Bold" Foreground="#A52A5B" Margin="5,10,0,5"/>
+                <PasswordBox x:Name="PasswordTextBox" Height="35" BorderThickness="1" BorderBrush="#FFC1E3" Padding="5" Background="#FFF0F5"/>
+
+                <Button Content="Login" Height="40" Background="#E75480" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="Button_Click" Margin="0,20,0,0" BorderThickness="0" />
+                <Button Content="Quit" Height="40" Background="#FF6F61" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="QuitButton_Click" Margin="0,10,0,0" BorderThickness="0" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0">
+                    <TextBlock Text="Don't have an account?" FontSize="12" Foreground="#777"/>
+                    <TextBlock Text=" Sign up" FontSize="12" Foreground="#E75480" Cursor="Hand" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

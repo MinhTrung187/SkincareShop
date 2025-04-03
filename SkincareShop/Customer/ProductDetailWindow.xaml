@@ -1,0 +1,64 @@
+﻿<Window x:Class="SkincareShop.Customer.ProductDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SkincareShop"
+        Title="Chi Tiết Sản Phẩm" Height="600" Width="600">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <TextBlock Grid.Row="0" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"
+                   Text="Chi Tiết Sản Phẩm"/>
+
+        <!-- Thông tin sản phẩm -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,20">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Image Source="{Binding ImageUrl}" 
+                       Width="150" Height="150" Stretch="Uniform" Margin="0,0,20,0"/>
+                <StackPanel>
+                    <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Name}"/>
+                    <TextBlock FontSize="14" Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Price, StringFormat=Giá: {0:N0} VNĐ}" Margin="0,5,0,0"/>
+                    <TextBlock FontSize="14" Text="{Binding Stock, StringFormat=Số lượng tồn: {0}}" Margin="0,5,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <!-- Thêm phần nhập số lượng -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock FontSize="14" Text="Số lượng:" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtQuantity" Width="50" Height="25" Text="1" 
+                         PreviewTextInput="txtQuantity_PreviewTextInput" 
+                         TextAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Nút Order -->
+        <Button x:Name="OrderButton" Grid.Row="2" Content="Đặt Hàng" Width="100" Height="30" 
+                HorizontalAlignment="Right" Margin="0,0,0,20" Click="OrderButton_Click"/>
+
+        <!-- Danh sách feedback -->
+        <StackPanel Grid.Row="3">
+            <TextBlock FontSize="16" FontWeight="Bold" Margin="0,0,0,10" Text="Đánh Giá Sản Phẩm"/>
+            <ListView x:Name="FeedbackListView" BorderThickness="1" BorderBrush="Gray" MaxHeight="200">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Người Dùng" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding User.FullName, StringFormat=User {0}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Đánh Giá" Width="80" DisplayMemberBinding="{Binding Rating, StringFormat={}{0} sao}"/>
+                        <GridViewColumn Header="Bình Luận" Width="300" DisplayMemberBinding="{Binding Comment}"/>
+                        <GridViewColumn Header="Ngày Tạo" Width="100" DisplayMemberBinding="{Binding CreatedAt, StringFormat={}{0:dd/MM/yyyy}}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>

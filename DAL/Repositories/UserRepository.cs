@@ -43,5 +43,20 @@ namespace DAL.Repositories
                 }
             }
         }
+        public User GetUserById(int userId)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.UserId == userId);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with ID {userId} not found.");
+            }
+            return user;
+        }
+
+        public void UpdateUser(User user)
+        {
+            _context.Users.Update(user);
+            _context.SaveChanges();
+        }
     }
 }

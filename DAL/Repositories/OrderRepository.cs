@@ -86,6 +86,12 @@ namespace SkincareShop.DAL
 
             return query.ToList();
         }
+        public List<Order> GetOrderByUserId(int userId)
+        {
+            return _context.Orders
+            .Where(p => p.UserId == userId)
+            .ToList();
+        }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DAL.Entities;
 using SkincareShop.DAL;
 using SkincareShop.Models;
 using System;
@@ -59,6 +60,10 @@ namespace SkincareShop.BLL
         public List<OrderHistoryItem> GetOrderHistory(int userId)
         {
             return _orderRepository.GetOrderHistoryByUserId(userId);
+        }
+        public List<Order> GetOrderByUserId(int userId)
+        {
+            return _orderRepository.GetOrderByUserId(userId);
         }
     }
 }

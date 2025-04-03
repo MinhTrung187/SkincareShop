@@ -30,7 +30,7 @@ namespace SkincareShop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text.Trim();
-            string password = PasswordTextBox.Text.Trim();
+            string password = PasswordTextBox.Password.Trim();
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {

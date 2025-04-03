@@ -47,15 +47,8 @@ namespace SkincareShop.Customer
         }
         private void LoadOrderHistory()
         {
-            try
-            {
-                List<OrderHistoryItem> orderHistory = orderService.GetOrderHistory(_userId);
-                lvOrderHistory.ItemsSource = orderHistory;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading order history: {ex.Message}");
-            }
+            List<Order>orders =orderService.GetOrderByUserId(_userId);
+            DataContext = orders;
         }
 
         private void SaveProfile_Click(object sender, RoutedEventArgs e)

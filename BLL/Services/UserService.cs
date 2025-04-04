@@ -11,7 +11,7 @@ namespace BLL.Services
 {
     public class UserService
     {
-        private readonly UserRepository _userRepository;
+        private UserRepository _userRepository;
 
         public UserService()
         {

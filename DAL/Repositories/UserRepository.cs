@@ -77,6 +77,7 @@ namespace DAL.Repositories
             }
         }
 
+
         public List<User> GetAllUsers()
         {
             using (var db = new SkincareShopContext())

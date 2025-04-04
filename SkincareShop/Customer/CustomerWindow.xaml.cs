@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL.Services;
+using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,12 @@ namespace SkincareShop.Customer
     public partial class CustomerWindow : Window
     {
         private readonly int _userId;
+        public  UserService _userService { get; private set; }
         public CustomerWindow(int userId)
         {
             InitializeComponent();
             _userId = userId;
+            _userService = new UserService();
         }
 
         private void SkinTest_Click(object sender, RoutedEventArgs e)
@@ -45,6 +49,19 @@ namespace SkincareShop.Customer
             CustomerProfile customerProfile = new CustomerProfile(_userId);
             customerProfile.ShowDialog();
 
+        }
+
+        private void ManageUser_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterUserWindow registerUserWindow = new RegisterUserWindow(isEditing: true, _userService.GetUserById(_userId));
+            registerUserWindow.ShowDialog();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            this.Close();
+            loginWindow.ShowDialog();
         }
     }
 }

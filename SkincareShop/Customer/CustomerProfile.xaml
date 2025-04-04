@@ -22,8 +22,6 @@
                     <TextBlock Text="Account Created At:" FontWeight="Bold" Margin="10,0,0,5"/>
                     <TextBox Name="txtCreatedAt" Text="{Binding CreatedAt}" Width="300" Padding="5" Foreground="Gray" Background="#E0E0E0" IsReadOnly="True" BorderBrush="Gray" BorderThickness="1"/>
 
-                    <Button Content="Save Changes" Width="150" Height="40" Background="#FF5733" Foreground="White"
-                            FontSize="16" Cursor="Hand" Margin="0,20,0,0" Click="SaveProfile_Click"/>
                 </StackPanel>
             </TabItem>
 

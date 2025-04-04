@@ -84,6 +84,8 @@ namespace SkincareShop
             if (newUser != null)
             {
                 MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
                 this.Close();
             }
             else
